@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>쇼핑몰 웹</title>
+</head>
+<body>
+<!-- div>ul>li*3>a -->
+<div class="container">
+    <ul class="nav nav-pills">
+        <li clss="nav-item"><a th:href="@{/}" class="nav-link">HOME</a></li>
+        <li clss="nav-item"><a th:href="@{/board/boardList}" class="nav-link">게시판</a></li>
+        <li clss="nav-item"><a th:href="@{/member/membership}" class="nav-link">회원가입</a></li>
+        <li clss="nav-item"><a th:if="${session.id == null}" th:href="@{/member/login}" class="nav-link">로그인</a>
+            <a th:if="${session.id != null}" th:href="@{/member/logout}" class="nav-link">로그아웃</a>
+        </li>
+    </ul>
+</div>
+<hr>
+<div class="container">
+    <h2>회원가입 페이지</h2>
+    <br>
+
+    <form action="" method="post" name="loginform" >
+        <div class="form-group">
+            <label for="id">아이디</label>
+            <div class="row" style="margin-left:3px" >
+                <input type="text" class="form-control col-md-3" id="id" placeholder="아이디를 입력" name="id">&nbsp;
+                <button type="button" class="btn btn-primary">중복체크</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password1">비밀번호</label>
+            <input type="password" class="form-control col-md-3" id="password1" placeholder="비밀번호 입력" name="password1">
+        </div>
+        <div class="form-group">
+            <label for="password2">비밀번호 확인</label>
+            <input type="password" class="form-control col-md-3" id="password2" placeholder="비밀번호 입력" name="password2">
+        </div>
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" class="form-control col-md-3" id="name" placeholder="이름 입력" name="name">
+        </div>
+        <div class="form-group" >
+            <label for="id">주소</label>
+            <div class="row" style="margin-left:1px">
+                <button type="button" class="btn btn-primary">우편번호</button>&nbsp;&nbsp;
+                <input type="text" class="form-control col-md-3" id="zipcode" name="zipcode">
+            </div>
+            <input type="text" class="form-control col-md-6" id="addr1" name="addr1">
+            <input type="text" class="form-control col-md-6" id="addr2" name="addr2">
+        </div>
+        <div class="form-group">
+            <label for="name">핸드폰 번호</label>
+            <input type="text" class="form-control col-md-2" id="phone" placeholder="숫자만 입력하세요." name="phone">
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="remember"> 아이디 기억
+            </label>
+        </div>
+        <div class="form-group">
+            <label>사용자 구분</label>&nbsp;&nbsp;
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="role1" name="role1">
+                <label class="custom-control-label" for="role1">USER</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="role2" name="role1">
+                <label class="custom-control-label" for="role2">ADMIN</label>
+            </div>
+        </div>
+        <div class="row" style="margin-left:3px">
+            <button type="submit" class="btn btn-primary col-md-1">전송</button>&nbsp;&nbsp;
+            <button type="reset" class="btn btn-primary col-md-1">새로쓰기</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
